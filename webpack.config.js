@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports ={
     entry: ["babel-polyfill",  "./src/index.js"],
@@ -12,7 +13,6 @@ module.exports ={
         devtoolFallbackModuleFilenameTemplate: "[absolute-resource-path]?[hash]",
     },
     module: {
-        loaders: [{ test:/\.jsx?$/, loaders: "babel" }],
         rules: [
             {
                 test: /\.css/,
@@ -21,10 +21,6 @@ module.exports ={
             {
                 test: /\.vue$/,
                 loader: "vue-loader",
-                options: {
-                  loaders: {},
-                  // other vue-loader options go here
-                },
               },
               {
                 test: /\.js$/,
@@ -40,6 +36,7 @@ module.exports ={
             }
         ]
     },
+    plugins: [new VueLoaderPlugin()],
     resolve: {
         alias: {
             vue$: "vue/dist/vue.esm.js"
@@ -56,3 +53,25 @@ module.exports ={
     },
     devtool: "inline-cheap-module-source-map"
 }
+
+if (process.env.NODE_ENV === "production") {
+    module.exports.devtool = "#source-map";
+    // http://vue-loader.vuejs.org/en/workflow/production.html
+    module.exports.plugins = (module.exports.plugins || []).concat([
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: '"production"',
+        },
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+          warnings: false,
+        },
+      }),
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+      }),
+    ]);
+  }
+  
