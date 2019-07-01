@@ -1,0 +1,19 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "to do list in Vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leesunghak/studyVue.git"
+  },
+  "author": "Hak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leesunghak/studyVue/issues"
+  },
+  "homepage": "https://github.com/leesunghak/studyVue#readme"
+}
