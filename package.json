@@ -4,6 +4,7 @@
   "description": "to do list in Vue",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "test": "npm test"
   },
   "repository": {
