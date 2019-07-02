@@ -26,9 +26,8 @@ html {
 },
 #app {
     font-size: 4px;
-    padding: auto;
 }
 #container {
-    margin: auto;
+    margin: 5% 30%;
 }
 </style>
