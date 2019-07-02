@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input id="searchBarInput" type="text" placeholder="What to do" v-model="newTodo" @keyup.enter="addTodo">
+        <input id="searchBarInput" type="text" placeholder="What to do" v-model="newToDo" @keyup.enter="addTodo">
         </input>
         <div v-for="(todo, index) in todosFiltered" :key="todo.id" class="todo-item">
             <div class="todo-item-left">
@@ -97,17 +97,17 @@
         },
         methods: {
             addTodo() {
-                if(this.newTodo.trim().length == 0) {
+                if(this.newToDo.trim().length == 0) {
                     return
                 }
                 this.todos.push({
                     id: this.idForToDo,
-                    title: this.newTodo,
+                    title: this.newToDo,
                     completed: false,
                 })
 
-                this.newTodo = ''
-                this.idForTodo++
+                this.newToDo = ''
+                this.idForToDo++
             },
             cancelEdit(todo) {
                 todo.title = this.beforeEditCache
