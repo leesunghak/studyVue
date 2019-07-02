@@ -1,19 +1,43 @@
 <template>
     <div id="app">
-        <h1>what the heck</h1>
+        <div id="container">
+            <h1>To Do List</h1>
+            <SearchBar />
+            <List />
+        </div>
     </div>
 </template>
 
 <script>
+import SearchBar from "./SearchBar";
+import List from "./List";
+import BtnAll from "./BtnAll";
+import BtnActive from "./BtnActive";
+import BtnCompleted from "./BtnCompleted";
+
 export default {
     name: "App",
-    components: {}
+    components: {
+        SearchBar,
+        List,
+        BtnAll,
+        BtnActive,
+        BtnCompleted
+    }
 
 }
 </script>
 
 <style>
+html {
+    width:100%;
+    height:100%;
+},
 #app {
-    text-align: center;
+    align: center;
+    font-size: 4px;
+}
+#container {
+    margin: auto;
 }
 </style>
